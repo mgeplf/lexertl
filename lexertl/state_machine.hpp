@@ -74,7 +74,7 @@ public:
         for (id_type i_ = 0; i_ < dfas_; ++i_)
         {
             const id_type dfa_alphabet_ = _internals._dfa_alphabet[i_];
-            id_type_vector *dfa_ = _internals._dfa[i_];
+            id_type_vector &dfa_ = _internals._dfa[i_];
 
             if (dfa_alphabet_ != 0)
             {
@@ -82,9 +82,9 @@ public:
 
                 do
                 {
-                    size_ = dfa_->size();
-                    minimise_dfa(dfa_alphabet_, *dfa_, size_);
-                } while (dfa_->size() != size_);
+                    size_ = dfa_.size();
+                    minimise_dfa(dfa_alphabet_, dfa_, size_);
+                } while (dfa_.size() != size_);
             }
         }
     }
